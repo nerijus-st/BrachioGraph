@@ -1,17 +1,13 @@
 import pytest
 
-from brachiograph import BrachioGraph
 import linedraw
+from brachiograph import BrachioGraph
 
-virtual_bg = BrachioGraph(
-    inner_arm=8,
-    outer_arm=8,
-    bounds=(-6, 4, 6, 12),
-    virtual_mode=True
-)
+virtual_bg = BrachioGraph(inner_arm=8, outer_arm=8, bounds=(-6, 4, 6, 12), virtual_mode=True)
 
 
 # ----------------- drawing methods -----------------
+
 
 def test_plot_from_file():
     virtual_bg.plot_file("test-patterns/test-pattern.json")
@@ -19,14 +15,18 @@ def test_plot_from_file():
 
 # ----------------- test pattern methods -----------------
 
+
 def test_test_pattern():
     virtual_bg.test_pattern()
+
 
 def test_vertical_lines():
     virtual_bg.vertical_lines()
 
+
 def test_horizontal_lines():
     virtual_bg.horizontal_lines()
+
 
 def test_box():
     virtual_bg.box()
@@ -34,11 +34,13 @@ def test_box():
 
 # ----------------- pen-moving methods -----------------
 
+
 def test_centre():
     virtual_bg.park()
 
 
 # ----------------- reporting methods -----------------
+
 
 def test_report():
     virtual_bg.report()
@@ -55,10 +57,14 @@ def test_maths_errors():
 
 # ----------------- end-to-end tests -----------------
 
+
 def test_linedraw_to_plot():
     linedraw.image_to_json(
-        "../test-patterns/test_pattern", resolution=1024,
-        draw_contours=10, repeat_contours=1,
-        draw_hatch=32, repeat_hatch=1,
-        )
+        "../test-patterns/test_pattern",
+        resolution=1024,
+        draw_contours=10,
+        repeat_contours=1,
+        draw_hatch=32,
+        repeat_hatch=1,
+    )
     virtual_bg.plot_file("images/test_gradient.json")
